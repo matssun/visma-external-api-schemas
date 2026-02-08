@@ -1,0 +1,28 @@
+  # OS                                
+  .DS_Store                                                                                           
+  Thumbs.db                           
+  *.swp                                        
+  *.swo
+
+  # IDE
+  .vscode/
+  .idea/
+  *.code-workspace
+
+  # Temporary files
+  *.tmp
+  *.temp
+  /tmp/
+
+  # Generated
+  dist/
+  build/
+
+  # Dependencies
+  node_modules/
+  venv/
+  .env
+
+  # Schema temp files
+  *.new.yaml
+  *.backup.yaml
