@@ -1,28 +1,45 @@
-  # OS                                
-  .DS_Store                                                                                           
-  Thumbs.db                           
-  *.swp                                        
-  *.swo
-
-  # IDE
+  # IDE and Editor files
   .vscode/
   .idea/
-  *.code-workspace
+  *.swp
+  *.swo
+  *~
+  .DS_Store
+  Thumbs.db
+  *.sublime-project
+  *.sublime-workspace
+
+  # Python virtual environments and caches
+  venv/
+  env/
+  __pycache__/
+  *.py[cod]
+  *$py.class
+  .pytest_cache/
+  .mypy_cache/
+  dist/
+  build/
+  *.egg-info/
+
+  # Local development files
+  .env
+  .env.local
+  *.log
+
+  # OS files
+  .DS_Store
+  .AppleDouble
+  .LSOverride
+  ._*
 
   # Temporary files
   *.tmp
   *.temp
-  /tmp/
+  ~*
+  .*.swp
 
-  # Generated
-  dist/
-  build/
-
-  # Dependencies
-  node_modules/
-  venv/
-  .env
-
-  # Schema temp files
-  *.new.yaml
-  *.backup.yaml
+  # Build artifacts (for local testing)
+  bazel-bin/
+  bazel-genfiles/
+  bazel-out/
+  bazel-testlogs/
