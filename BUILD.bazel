@@ -1,0 +1,21 @@
+# Visma External API Schema Repository
+#
+# This directory contains a git submodule pointing to the authoritative
+# Visma External API schema repository with automated update detection.
+#
+# Schema repository: https://github.com/yourorg/visma-external-api-schemas
+
+package(default_visibility = ["//visibility:public"])
+
+# Current Visma OpenAPI schema
+# This file is maintained in the external schema repository with:
+# - Version tracking (VERSION file)
+# - Changelog (SCHEMA_CHANGELOG.md)
+# - Weekly automated update checks (GitHub Actions)
+# - Manual update script (fetch-latest-schema.sh)
+
+filegroup(
+    name = "schema",
+    srcs = ["schemas/current/visma_external_api.yaml"],
+    visibility = ["//visibility:public"],
+)
