@@ -23,6 +23,7 @@ set -euo pipefail
 
 # Configuration
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ORIGINAL_SCHEMA="${REPO_ROOT}/schemas/original/visma_external_api.yaml"
 CURRENT_SCHEMA="${REPO_ROOT}/schemas/current/visma_external_api.yaml"
 NEW_SCHEMA=$(mktemp)
 ARCHIVE_DIR="${REPO_ROOT}/schemas/archive"
@@ -121,8 +122,15 @@ create_feature_branch() {
         cp "$CURRENT_SCHEMA" "${ARCHIVE_DIR}/${archive_filename}"
     fi
 
-    # Update current schema
+    # Save original (unmodified) schema
+    log_info "Saving original schema..."
+    cp "$NEW_SCHEMA" "$ORIGINAL_SCHEMA"
+
+    # Copy to current and apply RotReducedInvoicingType consolidation fix
+    log_info "Updating current schema (with enum consolidation fix)..."
     cp "$NEW_SCHEMA" "$CURRENT_SCHEMA"
+    # NOTE: After copying, manually apply RotReducedInvoicingType enum
+    # consolidation if needed (see SCHEMA_CHANGELOG.md)
 
     # Update VERSION file
     log_info "Updating VERSION file..."

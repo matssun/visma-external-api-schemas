@@ -4,7 +4,31 @@ All notable changes to the Visma eAccounting API schema will be documented in th
 
 ## Schema Versions
 
-### Current: v1.0 (2024-02-08)
+### Current: v2.0 (2026-02-17) - PascalCase Migration
+
+**Changes from v1.0:**
+- **Replaced camelCase spec with Visma's new PascalCase spec** (.NET 8 upgrade)
+  - Field names now PascalCase: `Id`, `Code`, `VatRate`, `StartDate`, `Name`
+  - Wrapper keys PascalCase: `Data`, `Meta`, `CurrentPage`, `PageSize`
+  - Nullable fields use OpenAPI 3.1.1 style `type: [string, "null"]`
+  - Consolidated 9 duplicate `RotReducedInvoicingType` enum definitions (same fix, updated count)
+- **Old camelCase spec archived** to `schemas/original/visma_external_api.yaml`
+- **Generated models** now have `Field(alias='VatRate')` matching live API directly
+- **Removed all runtime key transformation code**:
+  - `_pascal_to_camel` / `_transform_visma_response` from VismaAPIClient
+  - `_to_snake` / `_snake_keys` from 9 adapter files
+  - Dual-key `item.get("camelCase") or item.get("PascalCase")` from 5 service files
+
+**Why:** Visma confirmed .NET 8 upgrade (2026-02-03). PascalCase is now the canonical format
+in both the live API and the published OpenAPI spec.
+
+**Date Updated:** 2026-02-17
+**Source:** Visma eAccounting API v2 (PascalCase / .NET 8)
+**Last Fetched:** 2026-02-17
+
+---
+
+### v1.0 (2024-02-08)
 
 **Changes from previous version:**
 - Consolidated 6 duplicate `RotReducedInvoicingType` enum definitions into single shared component

@@ -16,6 +16,6 @@ package(default_visibility = ["//visibility:public"])
 
 filegroup(
     name = "schema",
-    srcs = ["schemas/current/visma_external_api.yaml"],
+    srcs = ["schemas/current/visma_external_api-with-fix.yaml"],
     visibility = ["//visibility:public"],
 )
