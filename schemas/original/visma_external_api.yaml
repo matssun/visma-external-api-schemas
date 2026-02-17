@@ -7446,15 +7446,6 @@ paths:
   /zapier/supplierinvoicedrafts: {}
 components:
   schemas:
-    RotReducedInvoicingType:
-      type: integer
-      enum:
-      - 0
-      - 1
-      - 2
-      format: int32
-      title: RotReducedInvoicingType
-      description: 'Possible values: 0 = Normal, 1 = Rot, 2 = Rut'
     AcceptInterpretationServiceRequest:
       additionalProperties: {}
       properties:
@@ -13914,7 +13905,12 @@ components:
           title: isCreditInvoice
           type: boolean
         rotReducedInvoicingType:
-          $ref: '#/components/schemas/RotReducedInvoicingType'
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          format: int32
         rotReducedInvoicingPropertyName:
           maxLength: 40
           minLength: 0
@@ -14275,7 +14271,12 @@ components:
           title: isCreditInvoice
           type: boolean
         rotReducedInvoicingType:
-          $ref: '#/components/schemas/RotReducedInvoicingType'
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          format: int32
         rotReducedInvoicingAmount:
           description: 'Format: 2 decimals.'
           format: double
@@ -14653,7 +14654,14 @@ components:
             $ref: '#/components/schemas/CustomerInvoiceRowApi'
           type: array
         rotReducedInvoicingType:
-          $ref: '#/components/schemas/RotReducedInvoicingType'
+          maximum: 2
+          minimum: 0
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          format: int32
         invoiceDate:
           format: date-time
           nullable: true
@@ -15085,8 +15093,12 @@ components:
           title: customerNumber
           type: string
         rotReducedInvoicingType:
-          allOf:
-          - $ref: '#/components/schemas/RotReducedInvoicingType'
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          format: int32
           readOnly: true
         invoiceDate:
           description: The date when the invoice was issued.
@@ -19470,7 +19482,12 @@ components:
           format: double
           type: number
         rotReducedInvoicingType:
-          $ref: '#/components/schemas/RotReducedInvoicingType'
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          format: int32
         rows:
           description: Order rows
           items:
@@ -25611,7 +25628,12 @@ components:
           readOnly: true
           type: number
         rotReducedInvoicingType:
-          $ref: '#/components/schemas/RotReducedInvoicingType'
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          format: int32
         roundingsAmount:
           format: double
           readOnly: true
